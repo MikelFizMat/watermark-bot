@@ -3,6 +3,13 @@ import io
 
 
 def add_watermark(photo_data, text: str) -> io.BytesIO:
+    """
+    bg: фоновое изображение размером (2width, 2height).
+    На центр bg вставляется переданное фото размером (width, height).
+    Создается изображение watermark_img размером (2width, 2height) с наклоном.
+    Затем на фон накладывается водяной знак.
+    Из итогового изображения вырезается область размером (width, height) — результат (result).
+    """
     photo = Image.open(photo_data)
     width = photo.width
     height = photo.height
